@@ -1,0 +1,89 @@
+<div class="calendar-container">
+  
+  <div class="calendar-header-wrapper">
+    <div class="calendar-header">
+      <h2>{{ weekDates[0] | date:'MMMM yyyy' }}</h2>
+      <div class="header-navigation">
+        <button (click)="previousWeek()" aria-label="Previous week"><</button>
+        <button (click)="goToToday()">Today</button>
+        <button (click)="nextWeek()" aria-label="Next week">></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="calendar-grid-sticky-header">
+    
+    <div class="day-header-corner"></div> 
+    <div *ngFor="let date of weekDates; trackBy: trackByDate"
+         class="day-header"
+         [class.today]="isToday(date)"
+         [class.sunday]="isSunday(date)">
+      <div class="day-name">{{ date | date:'EEE' }}</div>
+      <div class="day-date">{{ date | date:'d' }}</div>
+    </div>
+
+    
+    <div class="all-day-label-cell">all-day</div>
+    <div *ngFor="let date of weekDates; trackBy: trackByDate"
+         class="all-day-event-slot"
+         [class.today]="isToday(date)"
+         [class.sunday]="isSunday(date)"
+         (click)="openAddModalForAllday(date)">
+      
+      <ng-container *ngFor="let event of getAllDayEventsForDate(date); trackBy: trackByEventId">
+        <app-event-block
+          [event]="event"
+          [isAllDay]="true"
+          [style.backgroundColor]="getEventBackgroundColor(event.type)"
+          (editEvent)="openEditModal($event)"
+          (deleteEvent)="handleDeleteEventRequest($event)">
+        </app-event-block>
+      </ng-container>
+    </div>
+  </div>
+
+  
+  <div class="calendar-scrollable-content">
+    <div class="calendar-grid-body">
+      
+      <div class="time-column-body">
+        <div *ngFor="let hour of hours" class="time-label">
+          {{ hour.label }}
+        </div>
+      </div>
+
+      
+      <div *ngFor="let date of weekDates; trackBy: trackByDate"
+           class="day-column-body"
+           [class.today]="isToday(date)"
+           [class.sunday]="isSunday(date)">
+        <div *ngFor="let hour of hours; trackBy: trackByHour" class="hour-row"
+             (click)="openAddModal(date, hour.hour)">
+          <ng-container *ngFor="let event of getTimedEventsForHour(date, hour.hour); trackBy: trackByEventId">
+             <div class="event-block-wrapper"
+                  [style.top.%]="event.top"
+                  [style.height.%]="event.height"
+                  [style.left.%]="event.left"
+                  [style.width.%]="event.width"
+                  [style.zIndex]="event.zIndex">
+                <app-event-block
+                  [event]="event"
+                  [isAllDay]="false"
+                  [style.backgroundColor]="getEventBackgroundColor(event.type)"
+                  (editEvent)="openEditModal($event)"
+                  (deleteEvent)="handleDeleteEventRequest($event)">
+                </app-event-block>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-event-modal
+  *ngIf="showModal"
+  [modalData]="modalData"
+  (closeModal)="closeModal()"
+  (saveEvent)="handleSaveEvent($event)">
+</app-event-modal>

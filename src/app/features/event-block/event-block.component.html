@@ -1,0 +1,7 @@
+<div class="event-block" (click)="onEdit()" [class.all-day-event]="isAllDay">
+  <div class="event-title">{{ event.title }}</div>
+  <div *ngIf="!isAllDay" class="event-time">
+    {{ formatTime(event.start) }} - {{ formatTime(event.end) }}
+  </div>
+  <button class="delete-btn" (click)="$event.stopPropagation(); onDelete()" title="Remove event">X</button>
+</div>

@@ -1,0 +1,232 @@
+.calendar-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  padding: 20px;
+  background-color: #ffffff; 
+  color: #111827;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 40px); 
+  overflow: hidden; 
+}
+
+.calendar-header-wrapper {
+  position: sticky;
+  top: 0;
+  background-color: #ffffff; 
+  z-index: 10; 
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5e7eb; 
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.calendar-header h2 {
+  margin: 0;
+  font-size: 1.8em;
+  font-weight: 500;
+  color: #111827;
+}
+
+.header-navigation button {
+  padding: 8px 12px;
+  margin: 0 4px;
+  cursor: pointer;
+  border: 1px solid #d1d5db;
+  background-color: #f9fafb;
+  border-radius: 6px;
+  font-size: 0.9em;
+  color: #374151; 
+  transition: background-color 0.2s ease;
+}
+
+.header-navigation button:hover {
+  background-color: #f3f4f6;
+}
+
+.calendar-grid-sticky-header {
+  position: sticky;
+  top: 60px;
+  background-color: #ffffff;
+  z-index: 9;
+  display: grid;
+  grid-template-columns: 60px repeat(7, 1fr);
+  border-left: 1px solid #e5e7eb; 
+  border-right: 1px solid #e5e7eb; 
+}
+
+.time-label-corner {
+  height: 35px;
+  border-bottom: 1px solid #e5e7eb; 
+  border-right: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+}
+
+.day-header-row { 
+  display: contents; 
+}
+
+.day-header-corner {
+  height: 50px;
+  border-bottom: 1px solid #e5e7eb;
+  border-right: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+}
+
+
+.day-header {
+  text-align: center;
+  padding: 5px;
+  border-bottom: 1px solid #e5e7eb; 
+  border-right: 1px solid #e5e7eb; 
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f9fafb; 
+  color: #374151; 
+}
+
+.day-header:last-child {
+  border-right: none;
+}
+
+.day-name {
+  font-size: 0.75em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.day-date {
+  font-size: 1.3em;
+  font-weight: 600;
+  margin-top: 2px;
+  color: #111827; 
+}
+
+.all-day-row-header { 
+  display: contents;
+}
+
+.all-day-label-cell { 
+  height: 35px;
+  padding: 0 5px;
+  text-align: right;
+  border-bottom: 1px solid #e5e7eb; 
+  border-right: 1px solid #e5e7eb;
+  font-size: 0.8em;
+  font-weight: 500;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: #f9fafb;
+}
+
+.all-day-event-slot { 
+  height: 35px;
+  border-bottom: 1px solid #e5e7eb;
+  border-right: 1px solid #e5e7eb;
+  position: relative;
+  background-color: #f9fafb;
+}
+.all-day-event-slot:last-child {
+  border-right: none;
+}
+
+
+.calendar-scrollable-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-left: 1px solid #e5e7eb;
+  border-right: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.calendar-grid-body {
+  display: grid;
+  grid-template-columns: 60px repeat(7, 1fr);
+}
+
+.time-column-body {
+  
+}
+
+.time-label {
+  height: 60px;
+  padding: 5px;
+  text-align: right;
+  border-bottom: 1px solid #e5e7eb;
+  border-right: 1px solid #e5e7eb;
+  font-size: 0.8em;
+  color: #374151;
+}
+.time-label:last-child {
+  border-bottom: none;
+}
+
+.day-column-body {
+  border-right: 1px solid #e5e7eb;
+  position: relative;
+}
+.day-column-body:last-child {
+  border-right: none;
+}
+
+.hour-row {
+  position: relative;
+  height: 60px;
+  border-bottom: 1px dashed #e5e7eb;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.hour-row:hover {
+  background-color: #f0f7ff;
+}
+.hour-row:last-child {
+  border-bottom: none;
+}
+
+
+.day-header.today {
+  background-color: #e0f2fe;
+}
+.day-header.today .day-date {
+  color: #0c4a6e;
+  font-weight: 700;
+}
+.day-column-body.today {
+  background-color: #f0f8ff;
+}
+.all-day-event-slot.today {
+    background-color: #e0f2fe;
+}
+
+
+
+.day-header.sunday .day-name,
+.day-header.sunday .day-date {
+  color: #9ca3af;
+}
+.day-column-body.sunday .hour-row {
+  background-color: #f8f8f8;
+  cursor: not-allowed;
+}
+.day-column-body.sunday .hour-row:hover {
+  background-color: #f8f8f8;
+}
+.all-day-event-slot.sunday {
+    background-color: #f8f8f8;
+    cursor: not-allowed;
+}
+
+
+.event-block-wrapper {
+  position: absolute;
+  
+}
