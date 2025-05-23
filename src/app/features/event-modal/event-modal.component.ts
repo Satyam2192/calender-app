@@ -17,19 +17,16 @@ export class EventModalComponent implements OnInit, OnChanges {
   @Output() saveEvent = new EventEmitter<Omit<CalendarEvent, 'id'> | CalendarEvent>();
   @Output() deleteEventRequest = new EventEmitter<string>();
 
-  
-  
   private internalEventState: Pick<CalendarEvent, 'id'> | {} = {};
   isEditMode = false;
   eventTypes: EventType[] = ['TASK', 'HOLIDAY'];
 
-  
   title: string = '';
   type: EventType = 'TASK';
-  startDate: string = ''; 
-  startTime: string = ''; 
-  endDate: string = '';   
-  endTime: string = '';     
+  startDate: string = '';
+  startTime: string = '';
+  endDate: string = '';
+  endTime: string = '';
   isAllDayEvent: boolean = false;
 
   constructor() { }
@@ -46,9 +43,8 @@ export class EventModalComponent implements OnInit, OnChanges {
 
   initializeForm(): void {
     if (this.modalData && this.modalData.event) {
-      
       this.isEditMode = true;
-      this.internalEventState = { id: this.modalData.event.id }; 
+      this.internalEventState = { id: this.modalData.event.id };
       const eventToEdit = this.modalData.event;
       this.title = eventToEdit.title;
       this.type = eventToEdit.type;
@@ -60,7 +56,6 @@ export class EventModalComponent implements OnInit, OnChanges {
       this.endTime = format(endDateObj, 'HH:mm');
       this.isAllDayEvent = this.modalData.isAllDay || false;
     } else if (this.modalData && this.modalData.defaultStartTime && this.modalData.defaultEndTime) {
-      
       this.isEditMode = false;
       this.internalEventState = {};
       const defaultStartDate = new Date(this.modalData.defaultStartTime);
@@ -77,7 +72,7 @@ export class EventModalComponent implements OnInit, OnChanges {
       this.internalEventState = {};
       const now = new Date();
       const defaultStart = startOfDay(now);
-      const defaultEnd = new Date(defaultStart.getTime() + 60 * 60 * 1000); 
+      const defaultEnd = new Date(defaultStart.getTime() + 60 * 60 * 1000);
       this.title = '';
       this.type = 'TASK';
       this.startDate = format(defaultStart, 'yyyy-MM-dd');
@@ -88,18 +83,12 @@ export class EventModalComponent implements OnInit, OnChanges {
     }
 
     if (this.isAllDayEvent) {
-      
       if (this.modalData?.isAllDay) {
           this.startTime = '00:00';
-          
-          
-          
-          
           const endDateObj = parseISO(this.endDate);
           if(isValid(endDateObj) && format(endOfDay(endDateObj), 'HH:mm') === this.endTime || this.modalData.event?.end === endOfDay(endDateObj).getTime()){
             this.endTime = '23:59';
           } else if (this.modalData.event && new Date(this.modalData.event.end).getTime() === startOfDay(new Date(this.modalData.event.end)).getTime()){
-            
              this.endTime = '00:00';
           } else {
             this.endTime = '23:59';
@@ -118,7 +107,6 @@ export class EventModalComponent implements OnInit, OnChanges {
 
     if (this.isAllDayEvent) {
       startDateTime = startOfDay(parseISO(this.startDate));
-      
       endDateTime = endOfDay(parseISO(this.endDate));
     } else {
       if (!this.startTime || !this.endTime) {
@@ -135,8 +123,6 @@ export class EventModalComponent implements OnInit, OnChanges {
     }
 
     if (startDateTime.getTime() >= endDateTime.getTime()) {
-      
-      
       if (!this.isAllDayEvent || startDateTime.getTime() > endDateTime.getTime()) {
          alert('End date/time must be after start date/time.');
          return;

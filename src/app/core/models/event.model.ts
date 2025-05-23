@@ -1,16 +1,16 @@
 export type EventType = 'TASK' | 'HOLIDAY';
 
 export interface CalendarEvent {
-  id: string; 
+  id: string;
   title: string;
   type: EventType;
   start: number;
-  end: number;  
+  end: number;
 }
 
 export interface EventModalData {
-  event?: CalendarEvent; 
+  event?: CalendarEvent;
   defaultStartTime?: number;
-  defaultEndTime?: number; 
-  isAllDay?: boolean; 
+  defaultEndTime?: number;
+  isAllDay?: boolean;
 }

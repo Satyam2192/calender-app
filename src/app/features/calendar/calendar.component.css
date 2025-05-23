@@ -1,21 +1,21 @@
 .calendar-container {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   padding: 20px;
-  background-color: #ffffff; 
+  background-color: #ffffff;
   color: #111827;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 40px); 
-  overflow: hidden; 
+  height: calc(100vh - 40px);
+  overflow: hidden;
 }
 
 .calendar-header-wrapper {
   position: sticky;
   top: 0;
-  background-color: #ffffff; 
-  z-index: 10; 
+  background-color: #ffffff;
+  z-index: 10;
   padding-bottom: 10px;
-  border-bottom: 1px solid #e5e7eb; 
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .calendar-header {
@@ -40,7 +40,7 @@
   background-color: #f9fafb;
   border-radius: 6px;
   font-size: 0.9em;
-  color: #374151; 
+  color: #374151;
   transition: background-color 0.2s ease;
 }
 
@@ -55,23 +55,27 @@
   z-index: 9;
   display: grid;
   grid-template-columns: 60px repeat(7, 1fr);
-  border-left: 1px solid #e5e7eb; 
-  border-right: 1px solid #e5e7eb; 
+  border-left: 1px solid #e5e7eb;
+  /* border-right: 1px solid #e5e7eb; */ /* Intentionally removed for visual blending with scrollbar padding */
+  padding-right: 15px; 
+  
+  
+  box-sizing: border-box; 
 }
 
 .time-label-corner {
   height: 35px;
-  border-bottom: 1px solid #e5e7eb; 
+  border-bottom: 1px solid #e5e7eb;
   border-right: 1px solid #e5e7eb;
   background-color: #f9fafb;
 }
 
-.day-header-row { 
-  display: contents; 
+.day-header-row {
+  display: contents;
 }
 
 .day-header-corner {
-  height: 50px;
+  
   border-bottom: 1px solid #e5e7eb;
   border-right: 1px solid #e5e7eb;
   background-color: #f9fafb;
@@ -81,14 +85,14 @@
 .day-header {
   text-align: center;
   padding: 5px;
-  border-bottom: 1px solid #e5e7eb; 
-  border-right: 1px solid #e5e7eb; 
+  border-bottom: 1px solid #e5e7eb;
+  border-right: 1px solid #e5e7eb;
   height: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #f9fafb; 
-  color: #374151; 
+  background-color: #f9fafb;
+  color: #374151;
 }
 
 .day-header:last-child {
@@ -105,19 +109,19 @@
   font-size: 1.3em;
   font-weight: 600;
   margin-top: 2px;
-  color: #111827; 
+  color: #111827;
 }
 
-.all-day-row-header { 
+.all-day-row-header {
   display: contents;
 }
 
-.all-day-label-cell { 
+.all-day-label-cell {
   height: 35px;
   padding: 0 5px;
   text-align: right;
-  border-bottom: 1px solid #e5e7eb; 
-  border-right: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  border-right: 1px solid #d1d5db; /* Made vertical grid line darker */
   font-size: 0.8em;
   font-weight: 500;
   color: #374151;
@@ -127,38 +131,41 @@
   background-color: #f9fafb;
 }
 
-.all-day-event-slot { 
+.all-day-event-slot {
   height: 35px;
   border-bottom: 1px solid #e5e7eb;
-  border-right: 1px solid #e5e7eb;
+  border-right: 1px solid #d1d5db; /* Made vertical grid line darker */
   position: relative;
   background-color: #f9fafb;
+  overflow: hidden;
 }
 .all-day-event-slot:last-child {
   border-right: none;
 }
 
+.all-day-events-container {
+  grid-column: 2 / span 7;
+  position: relative;
+  height: 35px;
+}
+
 
 .calendar-scrollable-content {
   flex-grow: 1;
-  overflow-y: auto;
+  overflow-y: scroll; /* Changed from auto to scroll */
   overflow-x: hidden;
-  border-left: 1px solid #e5e7eb;
+  border-left: 1px solid #e5e7eb !important;
   border-right: 1px solid #e5e7eb;
   border-bottom: 1px solid #e5e7eb;
-}
+} 
 
 .calendar-grid-body {
   display: grid;
   grid-template-columns: 60px repeat(7, 1fr);
 }
 
-.time-column-body {
-  
-}
-
 .time-label {
-  height: 60px;
+  height: 50px;
   padding: 5px;
   text-align: right;
   border-bottom: 1px solid #e5e7eb;
@@ -228,5 +235,5 @@
 
 .event-block-wrapper {
   position: absolute;
-  
+
 }

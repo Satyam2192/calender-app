@@ -13,9 +13,9 @@
 
 .modal-content {
   background-color: white;
-  padding: 30px; 
-  border-radius: 15px; 
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   width: 90%;
   max-width: 400px;
 }
@@ -24,6 +24,7 @@ h3 {
   margin-top: 0;
   margin-bottom: 20px;
   text-align: center;
+  color: #111827;
 }
 
 .form-group {
@@ -34,7 +35,7 @@ h3 {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-  color: #374151; 
+  color: #374151;
 }
 
 .form-group input[type="text"],
@@ -42,12 +43,12 @@ h3 {
 .form-group input[type="time"],
 .form-group select {
   width: 100%;
-  padding: 10px; 
-  border: 1px solid #d1d5db; 
-  border-radius: 6px; 
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
   box-sizing: border-box;
   font-size: 0.95em;
-  color: #111827; 
+  color: #111827;
 }
 
 .form-group input[type="checkbox"] {
@@ -55,7 +56,7 @@ h3 {
   vertical-align: middle;
 }
 .form-group label[for="isAllDay"] {
-    display: inline-block; 
+    display: inline-block;
     font-weight: normal;
 }
 
@@ -73,44 +74,45 @@ h3 {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-  margin-top: 25px; 
+  margin-top: 25px;
 }
 
 .modal-actions button {
-  padding: 10px 18px;
-  border: none;
+  padding: 8px 16px;
+  border: 1px solid #d1d5db;
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.95em;
   font-weight: 500;
-  min-width: 90px;
+  min-width: 80px;
   text-align: center;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  background-color: white;
+  color: #374151;
+}
+
+.modal-actions button:hover {
+  background-color: #f3f4f6;
 }
 
 .modal-actions button[type="submit"] {
-  background-color: #195957; 
+  background-color: #3b82f6;
   color: white;
+  border-color: #3b82f6;
 }
 .modal-actions button[type="submit"]:hover {
-  background-color: #134543;
+  background-color: #2563eb;
+  border-color: #2563eb;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .modal-actions button.delete-button {
-  background-color: #a33737; 
+  background-color: #a33737;
   color: white;
+  border-color: #a33737;
 }
 .modal-actions button.delete-button:hover {
   background-color: #8a2e2e;
+  border-color: #8a2e2e;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.modal-actions button:not([type="submit"]):not(.delete-button) {
-  background-color: #e5e7eb; 
-  color: #374151; 
-}
-.modal-actions button:not([type="submit"]):not(.delete-button):hover {
-  background-color: #d1d5db;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }

@@ -7,7 +7,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 const LOCAL_STORAGE_KEY = 'angularCalendarEvents';
 
-
 const INITIAL_EVENTS_DATA: Omit<CalendarEvent, 'id'>[] = [
     { "title": "My Task 1", "type": "TASK", "start": 1745901600000, "end": 1745905200000 },
     { "title": "My Task 2", "type": "TASK", "start": 1745988000000, "end": 1745991600000 },
@@ -25,7 +24,6 @@ const INITIAL_EVENTS_DATA: Omit<CalendarEvent, 'id'>[] = [
     { "title": "My Task 14", "type": "TASK", "start": 1746938400000, "end": 1746942000000 },
     { "title": "My Task 15", "type": "HOLIDAY", "start": 1746765600000, "end": 1746772800000 }
 ];
-
 
 @Injectable({
   providedIn: 'root'
